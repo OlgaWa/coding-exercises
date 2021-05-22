@@ -1,14 +1,16 @@
 from flatmates_bill import Bill, Flatmate, PdfReport
 
 
-# Flatmates' Bill - CLI App
+# Flatmates' Bill - Command-Line Interface app.
 name1 = input("Hello! What is your name? ")
 amount = float(input("Please enter the bill amount (e.g. 200): "))
 period = input("Please enter the bill period (e.g. March 2021): ")
-days_in_the_house1 = int(input("How many days did you spend in the house during the bill period? "))
+days_in_the_house1 = int(input("How many days did you spend "
+                               "in the house during the bill period? "))
 
 name2 = input("What is the name of your flatmate? ")
-days_in_the_house2 = int(input(f"How many days did {name2} spend in the house during the bill period? "))
+days_in_the_house2 = int(input(f"How many days did {name2} spend in the "
+                               f"house during the bill period? "))
 
 bill1 = Bill(amount, period)
 flatmate1 = Flatmate(name1, days_in_the_house1)

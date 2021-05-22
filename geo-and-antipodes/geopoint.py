@@ -5,13 +5,14 @@ from pyowm import OWM
 from folium import Marker
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 
 class Geopoint (Marker):
     """
-    Creates a geopoint object with a given latitude and longitude.
-    Shows timezone, current date, time and weather in this place.
+    Create a geopoint object with a given latitude and longitude.
+    Show timezone, current date, time and weather in this place.
     """
 
     def __init__(self, latitude, longitude):
@@ -23,7 +24,8 @@ class Geopoint (Marker):
         tf = TimezoneFinder()
         timezone_str = tf.timezone_at(lat=self.latitude, lng=self.longitude)
         time_now = str(datetime.now(timezone(timezone_str)))
-        return f"Hello! Welcome in this beautiful place! You are in the {timezone_str} timezone.\n" \
+        return f"Hello! Welcome in this beautiful place! " \
+               f"You are in the {timezone_str} timezone.\n" \
                f"The current time is {time_now[0:10]}, {time_now[11:19]}."
 
     def get_weather(self):
