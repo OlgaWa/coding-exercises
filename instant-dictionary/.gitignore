@@ -1,0 +1,11 @@
+# Ignore files related to API keys
+.env
+
+# Ignore Pycharm files
+venv/
+.idea/
+__pycache__/
+requirements.txt
+
+# Ignore folders not containing code
+design/
