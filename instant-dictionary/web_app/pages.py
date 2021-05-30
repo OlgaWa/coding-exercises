@@ -1,29 +1,39 @@
 import justpy as jp
+from web_app import layout
+from web_app import abstract
 
 
-class Home:
+class Home(abstract.Page):
 
     path = "/"
 
-    def serve(self):
+    @classmethod
+    def serve(cls, req):
         wp = jp.QuasarPage(tailwind=True)
-        div = jp.Div(a=wp, classes="bg-purple-300 h-screen")
+
+        lay = layout.DefaultLayout(a=wp)
+        container = jp.QPageContainer(a=lay)
+
+        div = jp.Div(a=container, classes="bg-purple-300 h-screen p-4")
         jp.Div(a=div, text="Home", classes="text-4xl m-4")
-        jp.Div(a=div, text="""
-        Welcome to the Instant Dictionary App""",
+        jp.Div(a=div, text="Welcome to the Instant Dictionary App",
                classes="text-lg m-4")
         return wp
 
 
-class About:
+class About(abstract.Page):
 
     path = "/about"
 
-    def serve(self):
+    @classmethod
+    def serve(cls, req):
         wp = jp.QuasarPage(tailwind=True)
-        div = jp.Div(a=wp, classes="bg-purple-300 h-screen")
+
+        lay = layout.DefaultLayout(a=wp)
+        container = jp.QPageContainer(a=lay)
+
+        div = jp.Div(a=container, classes="bg-purple-300 h-screen p-4")
         jp.Div(a=div, text="About", classes="text-4xl m-4")
-        jp.Div(a=div, text="""
-        This is the Instant Dictionary App""",
+        jp.Div(a=div, text="This is the Instant Dictionary App",
                classes="text-lg m-4")
         return wp
