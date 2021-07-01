@@ -4,9 +4,8 @@ import json
 
 
 class Api:
-    """
-    Handle requests at /api?w=word.
-    """
+    """Handle requests at /api?w=word."""
+
     @classmethod
     def serve(cls, req):
         wp = jp.WebPage()

@@ -3,8 +3,8 @@ from fpdf import FPDF
 
 class Bill:
     """
-    Create object that contains information
-    about the bill (period, total amount).
+    Create a bill object that contains information
+    about the period and total amount.
     """
 
     def __init__(self, amount, period):
@@ -45,20 +45,16 @@ class PdfReport:
         pdf = FPDF("P", "mm", "A4")
         pdf.add_page("P")
 
-        # Add image.
         pdf.image("house.png", w=20, h=20)
 
-        # Insert title.
         pdf.set_font("Arial", "B", 64)
         pdf.set_text_color(30, 0, 44)
         pdf.cell(0, 70, "Flatmates bill", 0, align="C", ln=1)
 
-        # Insert period of the bill.
         pdf.set_font("Courier", "", 32)
         pdf.set_text_color(99, 37, 108)
         pdf.cell(0, 25, f"Period: {bill.period}", 0, align="C", ln=3)
 
-        # Insert names and due amounts of both flatmates.
         pdf.set_font("Arial", "B", 24)
         pdf.set_text_color(0, 0, 0)
         pdf.cell(0, 25, "", 0, align="C", ln=3)

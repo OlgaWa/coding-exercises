@@ -1,2 +1,3 @@
 # Ignore files with private information
 .env
+.idea/

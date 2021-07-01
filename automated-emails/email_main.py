@@ -12,8 +12,7 @@ df = pnd.read_excel("mailing_list.xlsx")
 
 
 def send_email():
-    # Send emails with daily news on the particular topic.
-
+    """Send emails with daily news on the particular topic."""
     today = str(datetime.date.today())
     yesterday = str(datetime.date.today() - datetime.timedelta(days=1))
 

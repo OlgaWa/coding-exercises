@@ -9,11 +9,13 @@ load_dotenv()
 
 
 class User:
+    """Create a user that can buy a ticket."""
 
     def __init__(self, name):
         self.name = name
 
     def buy(self, seat, card):
+        """Buy the ticket if the card is valid."""
         if seat.is_free():
             if card.validate(seat.get_price()):
                 seat.occupy()
@@ -27,11 +29,13 @@ class User:
 
 
 class Seat:
+    """A cinema seat that can be taken by the user."""
 
     def __init__(self, seat_id):
         self.seat_id = seat_id
 
     def get_price(self):
+        """Get a price of a cinema seat."""
         db = mysql.connector.connect(
             host="localhost",
             user=os.environ["USER"],
@@ -44,6 +48,7 @@ class Seat:
         return price
 
     def is_free(self):
+        """Check in the db if a seat is taken."""
         db = mysql.connector.connect(
             host="localhost",
             user=os.environ["USER"],
@@ -60,6 +65,7 @@ class Seat:
             return False
 
     def occupy(self):
+        """Change value of a seat taken in the db from 0 to 1."""
         db = mysql.connector.connect(
             host="localhost",
             user=os.environ["USER"],
@@ -73,6 +79,7 @@ class Seat:
 
 
 class Card:
+    """A bank card needed to finalize a seat purchase."""
 
     def __init__(self, type, number, cvc, holder):
         self.type = type
@@ -81,6 +88,8 @@ class Card:
         self.holder = holder
 
     def validate(self, price):
+        """Check if the card is valid and has a balance,
+        then subtract price from balance."""
         db = mysql.connector.connect(
             host="localhost",
             user=os.environ["USER"],
@@ -102,6 +111,7 @@ class Card:
 
 
 class Ticket:
+    """A cinema ticket purchased by the user."""
 
     def __init__(self, user, price, seat_number):
         self.user = user
@@ -111,7 +121,7 @@ class Ticket:
         self.seat_number = seat_number
 
     def to_pdf(self):
-
+        """Create a pdf ticket."""
         pdf = FPDF("P", "mm", "A4")
         pdf.add_page("P")
 

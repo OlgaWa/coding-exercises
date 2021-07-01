@@ -6,9 +6,7 @@ load_dotenv()
 
 
 class NewsFeed:
-    """
-    Create a newsletter with news articles for an email.
-    """
+    """Create an email with a newsletter."""
 
     base_url = "https://newsapi.org/v2/everything?"
     api_key = os.environ["NEWS_API_KEY"]
@@ -20,6 +18,7 @@ class NewsFeed:
         self.language = language
 
     def get(self):
+        """Create an email body with articles."""
         url = self._create_url()
         articles = self._get_articles(url)
 

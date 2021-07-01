@@ -1,7 +1,6 @@
-from flatmates_bill import Bill, Flatmate, PdfReport
+from fb_classes import Bill, Flatmate, PdfReport
 
 
-# Flatmates' Bill - Command-Line Interface app.
 name1 = input("Hello! What is your name? ")
 amount = float(input("Please enter the bill amount (e.g. 200): "))
 period = input("Please enter the bill period (e.g. March 2021): ")
